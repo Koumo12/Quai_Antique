@@ -1,0 +1,298 @@
+html,
+body {
+    
+    font-family: "Montserrat", sans-serif;
+	height: 100vh;
+}
+
+
+.header {
+    background-color: #08192d;        
+}
+
+.logo {
+	width: 200px;
+}
+    
+.Color {
+    color: #ffffff;
+}
+
+.Color:hover{
+  color: #fc0254;
+}
+
+.Color2 {
+    color: #fc0254;
+}
+
+.Color2:hover{
+  color: #ffffff;
+}
+
+.slider {
+	background-color: #0a183d;	
+}
+
+
+
+.slider-text {
+	color: #ffffff;
+	margin-top: 60px;
+}
+
+.slider-text h2 {
+	font-weight: 600;
+	font-size: 70px;
+}
+
+.slider-text span {
+	color: #fc0254;
+}
+
+.button {
+	font-size: 16px;
+	position: relative;
+	margin-top: auto;
+	padding: 1em 2.5em 1em 2.5em;
+	border: none;
+	border-radius: 2em;
+	transition: all 0.1s linear;
+	box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.btn1 {	
+	background-color: #fc0254;
+}
+
+.btn2 {
+	background-color: #383b70;
+}
+
+
+
+.item {
+	width: 500px; 
+	height: 500px;
+	margin-right: 10px;
+}
+
+.image {
+	width: 600px;
+	height:500px;
+}
+
+.containerHeight{
+	min-height: 60vh;
+	padding-top: 3em !important;
+}
+
+.tableImage {
+	width: 100px;
+	height: 50px;
+}
+
+.link {
+	text-decoration: none;
+}
+
+.danger {
+	color: red;
+}
+
+.images img{
+	width: 230px;
+	height: 150px;
+	border: none;
+	border-radius: 1em;
+}
+
+.image-container {
+	position: relative; /* pour que la position du texte soit relative à l'image */
+  }
+  
+.image-info {
+	position: absolute; /* pour positionner le texte par rapport à l'image */
+	top: 50%; /* pour centrer le texte verticalement */
+	left: 50%; /* pour centrer le texte horizontalement */
+	transform: translate(-50%, -50%); /* pour centrer le texte exactement */
+	z-index: 1; /* pour placer le texte au-dessus de l'image */
+	background-color: rgba(0, 0, 0, 0.5); /* pour ajouter un fond semi-transparent */
+	color: #fff; /* pour définir la couleur du texte */
+	padding: 10px; /* pour ajouter de l'espace autour du texte */
+	font-size: 16px; /* pour définir la taille du texte */
+	font-family: sans-serif; /* pour définir la police du texte */
+	opacity: 0; /* pour masquer le texte par défaut */
+  	transition: opacity 0.3s ease-in-out;
+}
+
+.image-container:hover .image-info {
+	opacity: 1; /* pour afficher le texte au survol de l'image */
+}
+
+h1 h2 h3
+h4 h5 h6 {
+	color: #0a183d;
+}
+
+h2 {
+	font-weight: 600;
+}
+
+p {
+	color: #6a7080;
+}
+
+ .color {
+	color: #fc0254;
+	font-size: 20px;
+}
+
+p .size {
+	font-size: 10px;
+}
+
+.font_H2 {
+	font-size: 50px;
+}
+
+.carte {
+	font-weight: 600;
+	font-size: 70px;
+}
+
+.mini {
+	font-size: 10px;
+
+}
+
+.spacing {
+	min-height: 40px;
+}
+/* ----------------
+Responsive
+ -------------------*/
+
+ .footer-section {
+	background: #0a183d;
+	padding: 50px;
+}
+
+.footer-widget {
+	padding-top: 2px;
+}
+
+.footer-widget h2 {
+	font-size: 16px;
+	color: #fff;
+	text-transform: uppercase;
+	margin-bottom: 30px;
+}
+
+.footer-widget ul {
+	list-style: none;
+}
+
+.footer-widget ul li {
+	display: inline-block;
+	color: #6a7080;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.footer-widget ul li a {
+	display: inline-block;
+	color: #6a7080;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.horaire {
+	color: #505565;
+}
+
+.copyright {
+	font-size: 11px;
+	text-transform: uppercase;
+	font-weight: 500;
+	color: #505565;
+	padding: 10px 0 25px;
+}
+
+.social-links a {
+	display: inline-block;
+	color: #6a7080;
+	font-size: 18px;
+	margin-right: 35px;
+}
+
+.space1 {
+	padding-left: 40px;
+}
+
+.space2 {
+	padding-left: 18px;
+}
+
+.space3 {
+	padding-left: 8px;
+}
+
+.space4 {
+	padding-left: 28px;
+}
+
+
+@media (max-width: 575.98px) {
+	.slider-text {
+		margin-top: 5px;
+	}
+
+	.slider-text h2 {
+		font-weight: 500;
+		font-size: 50px;
+	}
+
+	.button {
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 767.98px) {
+
+	.button {
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 991.98px) {
+	.slider-text {
+		margin-top: 15px;
+	}
+
+	.slider-text h2 {
+		font-weight: 500;
+		font-size: 50px;
+	}
+
+
+	.button {
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 1199.98px) {
+	.slider-text {
+		margin-top: 60px;
+	}
+}
+
+@media (max-width: 1399.98px) {
+	.slider-text {
+		margin-top: 60px;
+	}
+}
+
+

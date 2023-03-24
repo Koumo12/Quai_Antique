@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br>
+    <div class="container containerHeight">
+        <h2>Ajouter un menu</h2>
+        <br>
+        {{ form_start (creerForm)}}
+        <div class="row pb-5">
+            <div class="col-md-6">
+                {{ form_row (creerForm.formule)}}
+                {{ form_row (creerForm.wishDay)}}
+                {{ form_row (creerForm.dishFormule)}}
+                {{ form_row (creerForm.price)}}
+                <button class="btn btn-primary">Enregistrer</button>
+            </div>
+             <div class="col-md-6">
+            </div>
+        </div>
+        {{ form_end (creerForm)}}
+    </div>
+{% endblock %}

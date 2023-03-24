@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            <h3>{{ message }}</h3>
+        </div>
+    {% endfor %}
+
+    <br>
+    <div class="container containerHeight">
+        <h2>Modifier les menus</h2>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Formule</td>
+                    <td>Jour de la semanie</td>       
+                    <td>Menu culinaire</td> 
+                    <td><a href="{{'creer'}}" class="link">Créer un menu</a></td> 
+                </tr> 
+            </thead>
+            <tbody>
+                {% for menu in menus %}
+                    <tr>
+                        <td>{{menu.id}}</td>
+                        <td>{{menu.formule}}</td>
+                        <td>{{menu.wishDay}}</td>
+                         <td>{{menu.dishFormule}}</td>
+                        <td><a href="{{'supprimer/'}}{{menu.id}}" class="link danger">Supprimer</a></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br>
+{% endblock %}

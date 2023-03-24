@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            <h3>{{ message }}</h3>
+        </div>
+    {% endfor %}
+
+    <br>
+    <div class="container containerHeight">
+        <h2>Afficher les catégories</h2>
+        <br>
+        <div class="">
+            <div class="row mb-4">
+                <div class="col-sm-8">
+                    
+                </div>
+                <div class="col-sm-2">
+                    <a href="{{'/carte/afficher'}}" class="link">Afficher plat</a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="{{'creer_category'}}" class="link">Créer catégorie</a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Nom</td>
+                </tr> 
+            </thead>
+            <tbody>
+                {% for cat in cats %}
+                    <tr>
+                        <td>{{cat.id}}</td>
+                        <td>{{cat.titel}}</td>                       
+                        <td>
+                            <a href="{{'supprim/'}}{{cat.id}}" class="link danger">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br>
+    <div class="container containerHeight">
+        <h2>Ajouter horaire</h2>
+        <br>
+        {{ form_start (creerForm)}}
+        <div class="row pb-5">
+            <div class="col-md-6">
+                {{ form_row (creerForm.day)}}
+                {{ form_row (creerForm.isOpen)}}
+                <div class="row">
+                    <div class="col-md-4">
+                        {{ form_row (creerForm.MStartTime)}}
+                    </div>
+                    <div class="col-md-2">
+                        
+                    </div>
+                    <div class="col-md-4">
+                        {{ form_row (creerForm.MEndTime)}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        {{ form_row (creerForm.SStartTime)}}
+                    </div>
+                    <div class="col-md-2">
+                        
+                    </div>
+                    <div class="col-md-4">
+                        {{ form_row (creerForm.SEndTime)}}
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary">Enregistrer</button>
+            </div>
+             <div class="col-md-6">
+            </div>
+        </div>
+        {{ form_end (creerForm)}}
+    </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            <h3>{{ message }}</h3>
+        </div>
+    {% endfor %}
+
+    <br>
+    <div class="container containerHeight">
+        <h2>Afficher les horaires</h2>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Jour</td>
+                     <td>Ouvert & Fermée</td>        
+                    <td>Midi ouverture</td> 
+                    <td> fermeture</td> 
+                    <td>Soir ouverture</td> 
+                    <td> fermeture</td> 
+                    <td><a href="{{'creer'}}" class="link">Créer horaire</a></td> 
+                </tr> 
+            </thead>
+            <tbody>
+                {% for horaire in affHoraires %}
+                    <tr>
+                        <td>{{horaire.id}}</td>
+                        <td>{{horaire.day}}</td>
+                        <td>{{horaire.isOpen}}</td>
+                        <td>{{horaire.MStartTime|format_time(pattern='HH:mm')}}</td>
+                        <td>{{horaire.MEndTime|format_time(pattern='HH:mm')}}</td>
+                        <td>{{horaire.SStartTime|format_time(pattern='HH:mm')}}</td>
+                        <td>{{horaire.SEndTime|format_time(pattern='HH:mm')}}</td>
+                        <td>
+                            <a href="{{'modifier/'}}{{horaire.id}}" class="link ">Modifier</a> &nbsp;
+                            <a href="{{'supprimer/'}}{{horaire.id}}" class="link danger">Supprimer</a>
+                        </td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br>
+{% endblock %}

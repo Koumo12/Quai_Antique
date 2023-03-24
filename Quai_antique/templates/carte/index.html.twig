@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            <h3>{{ message }}</h3>
+        </div>
+    {% endfor %}
+
+    <br>
+    <div class="container containerHeight">
+        <h2>Modifier les plats</h2>
+        <br>
+        <div class="">
+            <div class="row mb-4">
+                <div class="col-sm-8">
+                    
+                </div>
+                <div class="col-sm-2">
+                    <a href="{{'creer'}}" class="link">Créer plat</a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="{{'/carte/afficher_category'}}" class="link">Afficher catégorie</a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Nom</td>
+                    <td>Image</td>       
+                    <td>Description</td>  
+                    <td>Catégorie</td> 
+                    <td>Prix</td> 
+                </tr> 
+            </thead>
+            <tbody>
+                {% for plat in plats %}
+                    <tr>
+                        <td>{{plat.id}}</td>
+                        <td>{{plat.titel}}</td>
+                        <td><img src="{{asset('/images/')}}{{plat.image}}" class="tableImage"></td>
+                        <td>{{plat.description}}</td>
+                         <td>{{plat.category}}</td>
+                        <td>{{plat.price}}</td>
+                        <td><a href="{{'supprimer/'}}{{plat.id}}" class="link danger">Supprimer</a></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br>
+{% endblock %}

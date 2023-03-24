@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <!-- Slider -->
+    
+        <div class="slider">
+        <div class="owl-carousel owl-theme ">
+            <div class="slider-item">
+                <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-md-6 col-sm-12 p-5">
+                            <div class="slider-text">
+                                <h2><span>Cocktail</span> !</h2>
+                                <p>Probieren Sie jetzt, Fraise für nur 6! Exklusiv als Gericht des Tages. </p>                            
+                                <div class="pt-5">
+                                    <a href="" class="button btn1 mr-3">Allez á la carte</a>
+                                    <a href="" class="button btn2 ">Commander</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-0 p-5">
+                            <img src="{{asset('img/drink.jpg')}}">
+                        </div>
+                    </div>
+                </div>
+            </div>              
+
+            <div class="slider-item">   
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 p-5">
+                        <div class="slider-text">
+                            <h2><span>Cocktail</span> !</h2>
+                            <p>Probieren Sie jetzt, Fraise für nur 6! Exklusiv als Gericht des Tages. </p>                            
+                            <div class="pt-5">
+                                <a href="" class="button btn1 mr-3">Allez á la carte</a>
+                                <a href="" class="button btn2 ">Commander</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-0 p-5">
+                        <img src="{{asset('img/drink.jpg')}}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-item">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 p-5">
+                        <div class="slider-text">
+                            <h2><span>Cola</span> !</h2>
+                            <p>Probieren Sie jetzt, Fraise für nur 6! Exklusiv als Gericht des Tages. </p>                            
+                            <div class="pt-5">
+                                <a href="" class="button btn1 mr-3">Allez á la carte</a>
+                                <a href="" class="button btn2 ">Commander</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-0 p-5">
+                        <img src="{{asset('img/drink1.jpg')}}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-item">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 p-5">
+                        <div class="slider-text">
+                            <h2><span>Meal</span> !</h2>
+                            <p>Probieren Sie jetzt, Fraise für nur 6! Exklusiv als Gericht des Tages. </p>                            
+                            <div class="pt-5">
+                                <a href="" class="button btn1 mr-3">allez á la carte</a>
+                                <a href="" class="button btn2 ">Commander</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-0 p-5">
+                        <img src="{{asset('img/meal.jpg')}}">
+                    </div>  
+                </div>
+            </div>           
+        </div>
+    </div>
+    
+    <!-- End Slider -->
+
+    <!-- Galerie -->
+        <div class="container containerHeight">
+                        
+            <div class="row pt-5">
+                {% for galerie in galeries %}
+                    <div class="col-lg-3 col-md-4 col-sm-6  mb-5 text-center">
+                        <div class="images image-container">
+                            <img src="{{asset('/images/')}}{{galerie.image}}" class="">
+                            <div class="image-info"><h5>{{galerie.titel}}</h5></div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row p-5">
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<div class="section-title">
+						<h2 class="font_H2">A volonté pour 19,95€</h2>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<p class="pb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					 <a href="" class="button btn1 ">Reserver une table</a>
+				</div>
+			</div>
+           
+        </div>
+    <!-- End Galerie -->
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            <h3>{{ message }}</h3>
+        </div>
+    {% endfor %}
+
+    <br>
+    <div class="container containerHeight">
+        <h2>Modifier la galerie</h2>
+        <br>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                    <td>Id</td>
+                    <td>Nom</td>
+                    <td>Image</td>                  
+                    <td><a href="{{ 'creer'}}" class="link">Créer</a></td>
+            </tr> 
+            </thead>
+            <tbody>
+                {% for galerie in galerie %}
+                    <tr>
+                        <td>{{galerie.id}}</td>
+                        <td>{{galerie.titel}}</td>
+                        <td><img src="{{asset('/images/')}}{{galerie.image}}" class="tableImage"></td>
+                        <td><a href="{{'supprimer/'}}{{galerie.id}}" class="link danger">Supprimer</a></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br>
+{% endblock %}
