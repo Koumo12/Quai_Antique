@@ -3,13 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Menu;
+use App\Entity\User;
 use App\Form\MenuType;
 use App\Repository\HoraireRepository;
 use App\Repository\MenuRepository;
+use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/menu', name: 'app_menu.')]
@@ -30,30 +33,32 @@ class MenuController extends AbstractController
     }
 
     #[Route('/creer', name: 'creer_menu')]
-    public function creer(Request $request, ManagerRegistry $doctrine, HoraireRepository $hr): Response
+    public function creer(Request $request, ManagerRegistry $doctrine, HoraireRepository $hr, Session $session, UserRepository $ur): Response
     {
-        $menu = new Menu();
-        $horaire = $hr->findAll();
-
-        // Formular
-        $form = $this->createForm(MenuType::class, $menu);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted())
-        {
-             // Entity Manager
-            $em = $doctrine->getManager();
-            $em->persist($menu);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('app_menu.afficher'));
-        }
-       
-        // Response
-        return $this->render('menu/creer.html.twig', [
-            'creerForm' => $form->createView(),
-            'affHoraires' => $horaire,
-        ]);
+      
+            $menu = new Menu();
+            $horaire = $hr->findAll();
+    
+            // Formular
+            $form = $this->createForm(MenuType::class, $menu);
+            $form->handleRequest($request);
+    
+            if ($form->isSubmitted())
+            {
+                 // Entity Manager
+                $em = $doctrine->getManager();
+                $em->persist($menu);
+                $em->flush();
+    
+                return $this->redirect($this->generateUrl('app_menu.afficher'));
+            }
+           
+            // Response
+            return $this->render('menu/creer.html.twig', [
+                'creerForm' => $form->createView(),
+                'affHoraires' => $horaire,
+            ]);
+          
        
     }
 

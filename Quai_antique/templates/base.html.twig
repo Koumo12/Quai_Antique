@@ -34,57 +34,88 @@
                 </svg></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link Color"  href="{{'/'}}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link Color" href="{{'/carte'}}">Carte</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link Color" href="{{'/menu'}}">Menu</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link Color dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown link
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link Color dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Créer
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{'/galerie'}}">Galerie</a></li>
-                                <li><a class="dropdown-item" href="{{'/carte/afficher'}}">Plats</a></li>
-                                <li><a class="dropdown-item" href="{{'/menu/afficher'}}">Menu</a></li>
-                                <li><a class="dropdown-item" href="#">Table</a></li>
-                                <li><a class="dropdown-item" href="{{'/horaire/afficher'}}">Horaire</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                        <li class="nav-item">
-                        <a class="nav-link Color2" href="{{'/login'}}">Se connecter </a>
-                        </li>
-                        &#160;&#160;
-                        
-                        <li class="nav-item">
-                        <a class="nav-link Color2" href="#"> S´inscrire</a>
-                        </li>
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item">
+                                <a class="nav-link Color"  href="{{'/'}}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link Color" href="{{'/carte'}}">Carte</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link Color" href="{{'/menu'}}">Menu</a>
+                            </li>
+                            
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li class="nav-item">
+                                    <a class="nav-link Color" href="{{path('app_client_index')}}">Info Clients</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link Color dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Créer
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{{path('app_galerie.modifier')}}">Galerie</a></li>
+                                        <li><a class="dropdown-item" href="{{path('app_carte.afficher_category')}}">Catégories/Plats</a></li>
+                                        <li><a class="dropdown-item" href="{{path('app_menu.afficher')}}">Menu</a></li>
+                                        <li><a class="dropdown-item" href="{{path('app_res_table.table_list')}}">Table</a></li>
+                                        <li><a class="dropdown-item" href="{{path('app_horaire.afficher')}}">Horaire</a></li>
+                                    </ul>
+                                </li>
+                            {% endif %}
+                        </ul>
 
+                        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <li class="nav-item">
+                            <a class="nav-link Color2" href="{{path('app_login')}}">Se connecter </a>
+                            </li>
+                             &#160;&#160;
+                             <li class="nav-item">
+                            <a class="nav-link Color2" href="{{path('app_client_new')}}"> S´inscrire</a>
+                            </li>
+                        {% endif %}
+
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <li class="nav-item dropdown icons">
+                                <a class="nav-link Color dropdown-toggle Color2 " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                   <i class="bi bi-person-fill"></i>
+                                </a>
+                                <ul class="dropdown-menu ">
+                                    {% if is_granted('ROLE_ADMIN') %} 
+                                        <li>
+                                            <a class="dropdown-item" href="/inscription"> Inscrire un admin</a>
+                                        </li>
+                                    {% endif %}
+                                    
+                                    {% if app.user %} 
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('app_client_edit', {'id': app.user.id}) }}">Profile</a>
+                                        </li>
+                                    {% endif %} 
+                                
+                                    
+                                    <li>
+                                        <a class="dropdown-item" href="{{'/logout'}}">Se déconnecter </a>
+                                    </li>                               
+                                </ul>
+                            </li>
+                        {% endif %}  
+
+                        
+
+                        
                     </div>
                 </div>
             </nav>
         </div>
     <!-- End Header section -->
 
-  
+    {% if message is defined %}
+            <div class="alert alert-danger">
+                    {{ message }}
+            </div>
+    {% endif %}
 
-     {% block body %} {% endblock %}
+    {% block body %} {% endblock %}
 
    	<!-- Footer section -->
 	<footer class="footer-section">
@@ -96,9 +127,8 @@
 							<div class="footer-widget">
 								<h2>A propos</h2>
 								<ul class=" p-2">
-									<li><a href="">Willkommen</a></li>
-									<li><a href="">Menukarte</a></li>
-									<li><a href="">Bestellungen</a></li>
+									<li><a href="">Bienvenue</a></li>
+									<li><a href="">Carte</a></li>
 								</ul>
 							</div>
 						</div>
@@ -132,9 +162,8 @@
 						</div>
 						<div class="col-sm-2">
 							<div class="footer-widget">
-								<h2>Kontakt</h2>
+								<h2>contakt</h2>
 								<ul class=" p-2">
-									<li><a href="">Kellner</a></li>
 									<li><a href="">Impressum</a></li>
 									<li><a href="">Login</a></li>
 								</ul>

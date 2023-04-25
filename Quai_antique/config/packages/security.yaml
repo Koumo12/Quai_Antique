@@ -9,7 +9,9 @@ security:
         app_user_provider:
             entity:
                 class: App\Entity\User
-                property: username 
+                property: email
+        # used to reload user from session & other features (e.g. switch_user)
+        # used to reload user from session & other features (e.g. switch_user)
                 
     firewalls:
         dev:
@@ -18,9 +20,12 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-            custom_authenticator: App\Security\ClientAuthenticator
+            custom_authenticator: App\Security\CustomAuthenticator
             logout:
                 path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
+            
                 # where to redirect after logout
                 # target: app_any_route
 
@@ -32,9 +37,26 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
-    access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+    access_control:        
+        - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/client/new, roles: PUBLIC_ACCESS }
+       
+
+        # Les routes dont les droits est reserver aux clients connectée
+        - { path: ^/client/edit/[0-9]+, roles: ROLE_USER }
+
+        # Les routes dont les droits est reserver a l´administrateur
+        - { path: ^/galerie, roles: ROLE_ADMIN}
+        - { path: ^/carte/[a-z]+, roles: ROLE_ADMIN}
+        - { path: ^/menu/[a-z]+, roles: ROLE_ADMIN}          
+        - { path: ^/table, roles: ROLE_ADMIN}
+        - { path: ^/horaire, roles: ROLE_ADMIN}
+        - { path: ^/inscription, roles: ROLE_ADMIN}
+        - { path: ^/client, roles: ROLE_ADMIN}
+         
+       # - { path: ^/admin, roles: ROLE_ADMIN }
+        #- { path: ^/inscription, roles: ROLE_ADMIN }
+        
 
 when@test:
     security:

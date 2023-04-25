@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br>
+    <div class="container containerHeight ">
+        <div class="row">        
+            <div class="col-md-12 pb-4"> 
+                <h2>Créer des informations sur les tables á reserver </h2>
+                <br>       
+                {{form_start(form)}}
+                    {{ include("res_table/_form.html.twig", {form: form})}} 
+                    <button class="btn btn-primary ">Creer</button>          
+                {{form_end(form, {render_rest : false})}}
+            </div>
+        </div>
+    </div>
+{% endblock %}

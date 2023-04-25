@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <br>
+    <div class="container containerHeight">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                 <h2>Créer un compte</h2>
+
+                {{ include('client/_form.html.twig') }}
+                <br>
+                <a href="{{ path('app_login') }}">Se connecter</a>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-0">
+            </div>
+        </div>
+       
+    
+    </div>
+    <br>
+{% endblock %}

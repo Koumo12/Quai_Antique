@@ -66,7 +66,7 @@ class CarteController extends AbstractController
             $em->persist($plat);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('app_carte.afficher'));
+            return $this->redirect($this->generateUrl('app_carte.afficher_plat'));
         }
        
 
@@ -143,7 +143,7 @@ class CarteController extends AbstractController
         $this->addFlash('success', 'Plat a été supprimé avec succès!');
         
         // Redirect
-        return $this->redirect($this->generateUrl('app_carte.afficher'));
+        return $this->redirect($this->generateUrl('app_carte.afficher_plat'));
     }
 
     #[Route('/supprim/{id}', name: 'supprimer_category')]

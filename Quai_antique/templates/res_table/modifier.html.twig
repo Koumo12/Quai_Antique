@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br>
+    <div class="container containerHeight">
+        <div class="row">        
+            <div class="col-12 pb-4">        
+                {{form_start(form)}}
+                    {{ include("res_table/_form.html.twig", {form: form})}} 
+                    <button class="btn btn-primary">Modifier</button>          
+                {{form_end(form, {render_rest : false})}}
+            </div>
+        </div>
+    </div>
+{% endblock %}

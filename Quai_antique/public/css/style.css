@@ -1,7 +1,7 @@
 html,
-body {
-    
-    font-family: "Montserrat", sans-serif;
+body {    
+    font-family: "Hind Vadodara", sans-serif;
+	font-size: 20px;
 	height: 100vh;
 }
 
@@ -12,6 +12,10 @@ body {
 
 .logo {
 	width: 200px;
+}
+
+.icons {
+	padding-right: 90px;
 }
     
 .Color {
@@ -33,8 +37,6 @@ body {
 .slider {
 	background-color: #0a183d;	
 }
-
-
 
 .slider-text {
 	color: #ffffff;
@@ -132,12 +134,25 @@ body {
 	opacity: 1; /* pour afficher le texte au survol de l'image */
 }
 
+.border {
+	background-color: #198754;
+	color: #fff;
+	border: none;
+	width: 25px;
+	height: 25px;
+	border-radius: 50% 50%;
+	position: absolute;
+	text-align: center;
+	padding-bottom: 2px;
+}
+
 h1 h2 h3
 h4 h5 h6 {
 	color: #0a183d;
 }
 
 h2 {
+	font-family: "Montserrat", sans-serif;
 	font-weight: 600;
 }
 
@@ -164,18 +179,31 @@ p .size {
 }
 
 .mini {
-	font-size: 10px;
+	font-size: 11px;
 
 }
 
 .spacing {
 	min-height: 40px;
 }
+
+/*
+*  Page reservation
+*/
+.nbreConvive {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+.error {
+	margin-top: -10px;
+	font-size: 14px;
+}
+
 /* ----------------
 Responsive
  -------------------*/
 
- .footer-section {
+.footer-section {
 	background: #0a183d;
 	padding: 50px;
 }
@@ -211,6 +239,7 @@ Responsive
 
 .horaire {
 	color: #505565;
+	font-size: 14px;
 }
 
 .copyright {

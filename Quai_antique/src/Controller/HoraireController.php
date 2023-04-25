@@ -27,8 +27,9 @@ class HoraireController extends AbstractController
     }
 
     #[Route('/creer', name: 'creer_horaire')]
-    public function creer(Request $request, ManagerRegistry $doctrine): Response
+    public function creer(Request $request, HoraireRepository $hr, ManagerRegistry $doctrine): Response
     {
+        $affHoraire = $hr->findAll();
         $horaire = new Horaire();
 
         // Formular
@@ -47,7 +48,8 @@ class HoraireController extends AbstractController
        
         // Response
         return $this->render('horaire/creer.html.twig', [
-            'creerForm' => $form->createView()
+            'creerForm' => $form->createView(),
+            'affHoraires' => $horaire,
         ]);
        
     }
@@ -85,8 +87,6 @@ class HoraireController extends AbstractController
             return $this->redirect($this->generateUrl('app_horaire.afficher'));
         }
 
-        
-       
         return $this->render('horaire/modifier.html.twig', [
             'creerForm' => $form->createView(),
             'affHoraires' => $affHoraire,

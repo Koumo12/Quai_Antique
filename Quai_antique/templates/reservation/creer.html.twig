@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            <h3>{{ message }}</h3>
+        </div>
+    {% endfor %}
+    <br>
+    <div class="container containerHeight ">
+        <div class="row"> 
+            <div class="col-lg-3 col-md-3 col-sm-0">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 pb-4"> 
+                <h2>Reserver une table </h2>
+                <br>  
+                    <div class="row">                    
+                        <div class="">
+                            <p class="text-center">Merci d´avance de préciser en commentaire le nombre d´enfants présent á table (si il y en a)! pour tout retard de plus de <b>20 min</b> votre table sera donnée á d´autre client!! </p>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-0">
+                        </div>
+                    </div>
+                <br>     
+                {{form_start (form)}}
+                    <div class="row">
+                        <div class="">
+                            {{form_row(form.name)}} 
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="nbreConvive">
+                            {{form_row(form.nbreConvive)}} 
+                            <div id="error" class="error">                          
+                            </div>
+                        </div>
+                         
+                    </div>
+                    
+                    <div class="row">
+                        <div class="">
+                            {{form_row(form.date)}} 
+                        </div>                       
+                    </div>
+
+                    <div class="row">
+                        <div class="">
+                            {{form_row(form.allergie)}} 
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <h6>A quel heure voulez-vous reserver la table ?</h6>
+                        <div class="">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-3">
+                                    {{form_row(form.subgroup)}}
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-3">
+                                    {{form_row(form.subgroup2)}}
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+
+                     <div class="row">
+                        <div class="">
+                            {{form_row(form.comment)}} 
+                        </div>
+                    </div>     
+                    <br>  
+                        <button class="btn btn-primary ">Créer</button>  
+                    <br>         
+               {{ form_end (form)}}
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-0">
+            </div>
+        </div>
+    </div>
+{% endblock %}

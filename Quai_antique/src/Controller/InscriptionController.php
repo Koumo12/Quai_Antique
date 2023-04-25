@@ -6,15 +6,17 @@ use App\Entity\User;
 use App\Repository\HoraireRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+
+
 
 class InscriptionController extends AbstractController
 {
@@ -22,9 +24,11 @@ class InscriptionController extends AbstractController
     public function index(Request $request, HoraireRepository $hr,  UserPasswordHasherInterface $passHasher,ManagerRegistry $doctrine, ValidatorInterface $validator): Response
     {
         $horaire = $hr->findAll();
+
+         
         $inscription = $this->createFormBuilder()
-        ->add('nom', TextType::class, [
-            'label' => 'Nom d´utilisateur'
+        ->add('email', EmailType::class, [
+            'label' => 'Email'
         ])
         ->add('password', RepeatedType::class, [
             'type' => PasswordType::class,
@@ -43,13 +47,18 @@ class InscriptionController extends AbstractController
             $infoSaisi = $inscription->getData();
 
             $user = new  User();
-            $user->setUsername($infoSaisi['nom']);
+            $user->setEmail($infoSaisi['email']);
 
             $user->setPassword(
                 $passHasher->hashPassword($user, $infoSaisi['password'])
             );
 
             $user->setRawPassword( $infoSaisi['password']);
+
+            /* uniquement pour créer un admin */
+            $role = ['ROLE_ADMIN'];
+            $user->setRoles($role);
+
 
                 $errors = $validator->validate($user);
                 if(count($errors) > 0)

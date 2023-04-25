@@ -32,11 +32,11 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 mb-5" data-tag="{{plat.category}}">
                             <div class="images text-center">
                                 <img src="{{asset('/images/')}}{{plat.image}}" class="">
-                                <h5>{{plat.titel}} - {{plat.price}} EUR</h5>
+                                <h6>{{plat.titel}} - {{plat.price}} EUR</h6>
                                 <div class="spacing">
                                     <p class="mini">({{plat.description}})</p>
                                 </div>
-                                <a href="" class="btn btn-outline-danger">Resever</a>
+                                <a href="{{'/reserver'}}" class="btn btn-outline-danger">Resever</a>
                             </div>
                         </div>
                     {% endfor %}

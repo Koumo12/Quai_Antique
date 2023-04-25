@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+    <br>
+    <div class="container containerHeight">
+        <h2>Clients</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>NbreConvive</th>
+                    <th>Allergie</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                    <td>{{ user.nbreConvive }}</td>
+                    <td>{{ user.allergie ? 'Yes' : 'No' }}</td>
+                    <td>
+                        <a href="{{ path('app_client_show', {'id': user.id}) }}">Afficher</a>
+                        <a href="{{ path('app_client_edit', {'id': user.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_client_new') }}">Créer un compte client</a>
+    </div>
+{% endblock %}
