@@ -1,6 +1,6 @@
 # Quai_Antique
 
-is a [Symfony](https://symfony.com/doc/current/index.html) project bootstrapped with **'composer create-project symfony/skeleton:"6.2.*" QuaiAntique'**.
+is a [Symfony](https://symfony.com/doc/current/index.html) project bootstrapped with **'composer create-project symfony/skeleton:"5.4.*" QuaiAntique'**.
 
 
 ## Getting Started
