@@ -1,49 +1,67 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            <h3>{{ message }}</h3>
-        </div>
-    {% endfor %}
-
     <br>
-    <!-- Carte -->
-        <div class="">
-            
-            <div class="container containerHeight wrapper">
+     <!-- Carte -->
                
-                <div class="row pb-5">
-                    <h2 class="carte">Carte</h2>
-                    <div class="pull-right text-center">
-                        <button class="btn btn-small " data-toggle="portfilter" data-target="all">
-                            All
+        <div class="container containerHeight wrapper">
+            
+            <div class="pb-4 text-center">
+                
+                <h2 class="carte">Carte</h2>
+
+                <div class="p-3">
+                    <button class="btn btn-small " data-toggle="portfilter" data-target="all">
+                        <i> All </i>
+                    </button>
+                    {% for category in categories %}
+                        <button class="btn btn-small " data-toggle="portfilter" data-target="{{category.titel}}">
+                            <i>{{category.titel}}</i>
                         </button>
-                        {% for category in categories %}
-                            <button class="btn btn-small " data-toggle="portfilter" data-target="{{category.titel}}">
-                                {{category.titel}}
-                            </button>
-                        {% endfor %}
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="row">
-                    {% for plat in plats %}
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" data-tag="{{plat.category}}">
-                            <div class="images text-center">
-                                <img src="{{asset('/images/')}}{{plat.image}}" class="">
-                                <h6>{{plat.titel}} - {{plat.price}} EUR</h6>
-                                <div class="spacing">
-                                    <p class="mini">({{plat.description}})</p>
-                                </div>
-                                <a href="{{'/reserver'}}" class="btn btn-outline-danger">Resever</a>
-                            </div>
-                        </div>
                     {% endfor %}
-                </div>    
-                <div class="push"></div>        
+                </div>
+
+                <a href="{{'/reserver'}}" class="button2 btn1 ">Reserver une table</a>
+                
             </div>
+            <div class="clearfix"></div>
+            <div class="row pb-3">
+                <div class="col-lg-3 col-md-3 col-sm-0">
+                        
+                </div> 
+                <div class="col-lg-6 col-md-6 col-sm-12" >  
+                    {% for category in categories %}
+                        <div class="row pb-3" data-tag="{{category.titel}}">
+                            <div class="carteCategoryTitel text-center">
+                                <h6>{{category.titel}}</h6>
+                            </div> 
+                            <div class=" ">                                    
+                                {% for plat in plats %}
+                                    {% if (category.titel == plat.category) %}
+                                        <div class="row " data-tag="{{plat.category}}">
+                                            <div class="col-10 ">
+                                                <h6 class="hCarte">{{plat.titel}}</h6>
+                                                <p class="pCarte">{{plat.description}}</p>
+                                            </div>
+                                            <div class="col-2 ">
+                                                <h6>{{plat.price}} €</h6>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        
+                                    {% endif %}
+                                {% endfor %}
+                            </div>      
+                        </div>                          
+                    {% endfor %}
+                </div> 
+                <div class="col-lg-3 col-md-3 col-sm-0">
+                        
+                </div>   
+            </div>    
+            <div class="push"></div>        
         </div>
-    <!-- End Carte -->
+        
+     <!-- End Carte -->
     <br>
 {% endblock %}

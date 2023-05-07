@@ -16,9 +16,6 @@ class Carte
     #[ORM\Column(length: 255)]
     private ?string $titel = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $image = null;
-
     #[ORM\Column]
     private ?float $price = null;
 
@@ -41,18 +38,6 @@ class Carte
     public function setTitel(string $titel): self
     {
         $this->titel = $titel;
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(string $image): self
-    {
-        $this->image = $image;
 
         return $this;
     }

@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ReservationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
 class Reservation
@@ -15,6 +17,7 @@ class Reservation
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[NotBlank(message : 'Veuillez entrer votre nom !')]
     private ?string $name = null;
 
     #[ORM\Column(nullable: true)]
@@ -33,6 +36,7 @@ class Reservation
     private ?bool $allergie = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[NotNull()]
     private ?\DateTimeInterface $date = null;
 
     public function getName(): ?string
@@ -125,8 +129,5 @@ class Reservation
         return $this;
     }
 
-    
-
-   
   
 }

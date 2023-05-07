@@ -28,8 +28,7 @@
             <thead>
                 <tr>
                     <td>Id</td>
-                    <td>Nom</td>
-                    <td>Image</td>       
+                    <td>Nom</td>       
                     <td>Description</td>  
                     <td>Catégorie</td> 
                     <td>Prix</td> 
@@ -39,8 +38,7 @@
                 {% for plat in plats %}
                     <tr>
                         <td>{{plat.id}}</td>
-                        <td>{{plat.titel}}</td>
-                        <td><img src="{{asset('/images/')}}{{plat.image}}" class="tableImage"></td>
+                        <td>{{plat.titel}}</td>                       
                         <td>{{plat.description}}</td>
                          <td>{{plat.category}}</td>
                         <td>{{plat.price}}</td>

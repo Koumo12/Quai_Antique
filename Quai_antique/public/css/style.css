@@ -88,7 +88,7 @@ body {
 
 .containerHeight{
 	min-height: 60vh;
-	padding-top: 3em !important;
+	padding-top: 2em !important;
 }
 
 .tableImage {
@@ -177,6 +177,42 @@ p .size {
 	font-weight: 600;
 	font-size: 70px;
 }
+
+.carteCategoryTitel
+{
+	border: 1px solid #0a183d;
+	background-color: #0a183d;
+	color: #ffffff;
+	padding-top: 10px;
+	margin-bottom: 15px;
+}
+
+.hCarte {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.pCarte {
+	font-size: 15px;
+}
+
+.reserver {
+	text-decoration: none;
+	color: #fc0254;
+}
+
+.button2 {
+	font-size: 16px;
+	position: relative;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	border: none;
+	border-radius: 2em;
+	transition: all 0.1s linear;
+	box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+	text-decoration: none;
+	color: #ffffff;
+}
+
 
 .mini {
 	font-size: 11px;

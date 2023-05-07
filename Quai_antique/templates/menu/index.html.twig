@@ -4,18 +4,18 @@
 
 {% block body %}
      <!-- Menu -->
-        <div class="container containerHeight text-center">
+        <div class="container containerHeight text-center pb-5">
             <h2>MENU DU MARCHÉ</h2>    
 
             {% for menu in menus %}        
-                <div class="row pt-3">
+                <div class="row pt-3 pb-2">
                     <div class="col-lg-3 col-md-3 col-sm-2">
                     </div>
                     
                     <div class="col-lg-6 col-md-6 col-sm-8 text-center">
                         <span class="color">{{menu.formule}}</span>
                         <p class="size">({{menu.wishDay}})</p>
-                        <h5>{{menu.dishFormule}} &nbsp; - &nbsp; {{menu.price}} EUR</h5>
+                        <h6>{{menu.dishFormule}} &nbsp; - &nbsp; {{menu.price}} €</h6>
                     </div>                
 
                     <div class="col-lg-3 col-md-3 col-sm-2">

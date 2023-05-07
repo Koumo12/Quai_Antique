@@ -10,6 +10,7 @@ use App\Repository\CarteRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\HoraireRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\ManagerRegistry as DoctrineManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,14 +21,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class CarteController extends AbstractController
 {
     #[Route('/', name: 'carte')]
-    public function index(CarteRepository $cr, CategoryRepository $catR, HoraireRepository $hr): Response
+    public function index(CarteRepository $cr, CategoryRepository $catR, HoraireRepository $hr, ManagerRegistry $doctrine): Response
     {
-        $plat = $cr->findAll();
+        $plats = $cr->findAll();       
         $cat = $catR->findAll();
         $horaire = $hr->findAll();
-
+        
         return $this->render('carte/carte.html.twig', [
-            'plats' => $plat,
+            'plats' => $plats,
             'categories' => $cat,
             'affHoraires' => $horaire,
         ]);
@@ -45,24 +46,8 @@ class CarteController extends AbstractController
 
         if ($form->isSubmitted())
         {
-             // Entity Manager
+            // Entity Manager
             $em = $doctrine->getManager();
-            $image = $request->files->get('carte')['image'];
-
-            if($image)
-            {
-                $dataname = md5(uniqid()). '.'. $image->guessClientExtension();
-            }
-
-            $image->move(
-                $this->getParameter('images_file'),
-                $dataname
-            );
-
-            $plat->setImage($dataname);
-
-            // Persist
-
             $em->persist($plat);
             $em->flush();
 

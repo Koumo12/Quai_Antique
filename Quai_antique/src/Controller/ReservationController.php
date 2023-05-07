@@ -2,15 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\InfoTable;
 use App\Entity\Reservation;
-use App\Entity\User;
-use App\Form\ReservationType;
 use App\Repository\HoraireRepository;
 use App\Repository\InfoTableRepository;
 use App\Repository\ReservationRepository;
-use App\Repository\UserRepository;
-use Doctrine\DBAL\Types\JsonType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -18,16 +13,14 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
-use Symfony\Component\Validator\Constraints\Json;
-use Symfony\Component\Form\FormErrorIterator;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ReservationController extends AbstractController
 {
@@ -39,10 +32,11 @@ class ReservationController extends AbstractController
     }
 
     #[Route('/reservation', name: 'app_reservation')]
-    public function index(): Response
-    {
+    public function index(ReservationRepository $rr,  HoraireRepository $hr): Response
+    {   $reservation = $rr->findAll();
         return $this->render('reservation/index.html.twig', [
-            'controller_name' => 'ReservationController',
+            'forms' => $reservation,
+            'affHoraires' => $hr->findAll(),
         ]);
     }
 
@@ -121,6 +115,7 @@ class ReservationController extends AbstractController
                     'multiple' => true,
                 ]) 
                 ->add('comment', TextareaType::class, [
+                    'required' => false,
                     'label' => 'Autres précisions',
                     'help' => 'Ex: Nombre d´enfants présent'
                 ])             
@@ -217,6 +212,7 @@ class ReservationController extends AbstractController
                     'multiple' => true,
                 ]) 
                 ->add('comment', TextareaType::class, [
+                    'required' => false,
                     'label' => 'Autres précisions',
                     'help' => 'Ex: Nombre d´enfants présent'
                 ])             
@@ -281,6 +277,21 @@ class ReservationController extends AbstractController
         $query = array_merge($query1, $query2);
 
         return new JsonResponse($query);
-    }    
+    }  
+    
+    #[Route('/supprimer/{id}', name: 'supprimer_res')]
+    public function supprimer($id, ReservationRepository $rr, ManagerRegistry $doctrine): Response
+    {
+        $em = $doctrine->getManager();
+        $reservation = $rr->find($id);
+        $em->remove($reservation);
+        $em->flush();
+
+        // Message
+        $this->addFlash('success', 'Réservation supprimé avec succès!');
+        
+        // Redirect
+        return $this->redirect($this->generateUrl('app_reservation'));
+    }
     
 }
