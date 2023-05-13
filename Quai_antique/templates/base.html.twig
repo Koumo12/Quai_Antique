@@ -80,9 +80,14 @@
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <li class="nav-item dropdown icons">
                                 <a class="nav-link Color dropdown-toggle Color2 " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                   <i class="bi bi-person-fill"></i>
+                                   <i class="bi bi-person-fill"></i>                                  
                                 </a>
+                                 
                                 <ul class="dropdown-menu ">
+                                    <li>
+                                        <a class="dropdown-item" >{{app.user.email}}</a>
+                                    </li>
+                                    
                                     {% if is_granted('ROLE_ADMIN') %} 
                                         <li>
                                             <a class="dropdown-item" href="/inscription"> Inscrire un admin</a>
@@ -93,8 +98,7 @@
                                         <li>
                                             <a class="dropdown-item" href="{{ path('app_client_edit', {'id': app.user.id}) }}">Profile</a>
                                         </li>
-                                    {% endif %} 
-                                
+                                    {% endif %}                                 
                                     
                                     <li>
                                         <a class="dropdown-item" href="{{'/logout'}}">Se déconnecter </a>
@@ -160,8 +164,8 @@
 							</div>
 						</div>
 						<div class="col-sm-2">
-							<div class="footer-widget">
-								<h2>contakt</h2>
+							<div class="footer-widget ">
+								<h2 class="contact">contact</h2>
 								<ul class=" p-2">
 									<li><a href="">Impressum</a></li>
 									<li><a href="">Login</a></li>

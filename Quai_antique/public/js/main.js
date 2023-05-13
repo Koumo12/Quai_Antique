@@ -150,13 +150,13 @@ window.onload =  () => {
 
 
      // Traitement des données du formulaire Reservation
+     
+     const form = document.querySelector('form_js');
 
-     let form = document.querySelector('form');
-   
-     const handleSubmit = (event) => {
-       event.preventDefault();
+      const handleSubmit = (event) => {
+      event.preventDefault();
        
-      const form = document.querySelector('form');
+      
 
       const formData = new FormData(form);
 
@@ -205,8 +205,8 @@ window.onload =  () => {
         })
      }
      
-     form.addEventListener('submit', handleSubmit)
-
+    
+    form.addEventListener('submit', handleSubmit)
  } 
  
 

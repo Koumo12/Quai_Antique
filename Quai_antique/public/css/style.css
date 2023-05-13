@@ -311,6 +311,10 @@ Responsive
 
 
 @media (max-width: 575.98px) {
+	.commande
+	{
+		margin-top: 60px;
+	}
 	.slider-text {
 		margin-top: 5px;
 	}

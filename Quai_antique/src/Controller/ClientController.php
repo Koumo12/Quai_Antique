@@ -9,6 +9,7 @@ use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -54,7 +55,7 @@ class ClientController extends AbstractController
                     'oui' => true,
                     'non' => false
                 ]
-            ])
+            ])           
             ->getForm()
         ;
         $form->handleRequest($request);

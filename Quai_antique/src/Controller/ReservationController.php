@@ -35,7 +35,7 @@ class ReservationController extends AbstractController
     public function index(ReservationRepository $rr,  HoraireRepository $hr): Response
     {   $reservation = $rr->findAll();
         return $this->render('reservation/index.html.twig', [
-            'forms' => $reservation,
+            'form' => $reservation,
             'affHoraires' => $hr->findAll(),
         ]);
     }
@@ -248,7 +248,7 @@ class ReservationController extends AbstractController
         }
 
         return $this->render('reservation/creer.html.twig', [
-            'form' =>$form->createView(),
+            'forms' =>$form->createView(),
             'affHoraires' => $hr->findAll(),
         ]);
     }  
