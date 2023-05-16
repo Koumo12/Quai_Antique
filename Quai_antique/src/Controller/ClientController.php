@@ -37,7 +37,9 @@ class ClientController extends AbstractController
     {
         $user = new User();
         $form = $this->createFormBuilder()
-            ->add('email', EmailType::class)
+            ->add('email', EmailType::class, [
+                'required' =>  true,
+            ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'required' =>  true,
@@ -83,7 +85,7 @@ class ClientController extends AbstractController
                 if(count($errors) > 0)
                 {
                     return $this->render('client/new.html.twig', [
-                        'form' => $form->createView(),
+                        'creerform' => $form->createView(),
                         'errors' => $errors,
                         'affHoraires' => $hr->findAll(),
                     ]);
@@ -98,7 +100,8 @@ class ClientController extends AbstractController
 
         return $this->renderForm('client/new.html.twig', [
             'user' => $user,
-            'form' => $form,
+            'errors' => null,
+            'creerform' => $form,
             'affHoraires' => $hr->findAll(),
         ]);
     }
@@ -126,7 +129,7 @@ class ClientController extends AbstractController
 
         return $this->renderForm('client/edit.html.twig', [
             'user' => $user,
-            'form' => $form,
+            'creerform' => $form,
             'affHoraires' => $hr->findAll(),
         ]);
     }

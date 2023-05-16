@@ -23,9 +23,12 @@ class CarteType extends AbstractType
                 'required' => false,
             ])
             ->add('category', EntityType::class, [
+                'required' => true,
                 'class' => Category::class,
             ])   
-            ->add('price', MoneyType::class )            
+            ->add('price', MoneyType::class, [
+                'required' => true,
+            ])            
             ->add('enregister', SubmitType::class)
         ;
     }

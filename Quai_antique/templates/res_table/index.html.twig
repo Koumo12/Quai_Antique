@@ -10,8 +10,6 @@
                 <tr>
                     <td>Nr.</td>
                     <td>Nbre de places</td>
-                    <td>Jour</td>                    
-                    <td>Heure midi</td>
                     <td><a href="{{ '/table/creer'}}">Créer</a></td>
                 </tr> 
             </thead>
@@ -20,10 +18,7 @@
                     <tr>
                         <td>{{table.id}}</td>
                         <td>{{table.placeNumber}}</td>
-                        <td>{{table.day}}</td>
-                        {% for mid in table.heureMidis %}
-                            <td>{{mid.heure|format_time(pattern='HH:mm')}}</td>
-                        {% endfor %}
+                        
                         <td>
                             <a href="{{'/table/modifier/'}}{{table.id}}" class="link ">Modifier</a> &nbsp;
                             <a href="{{'/table/supprimer/'}}{{table.id}}" class="link danger">Supprimer</a>

@@ -2,6 +2,11 @@
 
 
 {% block body %}
+     {% for error in errors %}
+        <div class=" alert alert-danger">
+            <h3> {{error.message}} </h3>
+        </div>
+    {% endfor %}
     <br>
     <div class="container containerHeight">
         <div class="row">
