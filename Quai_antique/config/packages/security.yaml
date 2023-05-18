@@ -28,6 +28,21 @@ security:
             
                 # where to redirect after logout
                 # target: app_any_route
+        jwt_auth:
+            pattern: ^/login
+            stateless: true 
+            
+            provider: app_user_provider
+            custom_authenticator: App\Security\CustomAuthenticator
+            json_login:
+                check_path: /login/api/login_check
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+        api:
+            pattern:   ^/api
+            stateless: true    
+            jwt: ~
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -40,6 +55,7 @@ security:
     access_control:        
         - { path: ^/login, roles: PUBLIC_ACCESS }
         - { path: ^/client/new, roles: PUBLIC_ACCESS }
+        - { path: ^/api,  roles: IS_AUTHENTICATED_FULLY }
        
 
         # Les routes dont les droits est reserver aux clients connectée
