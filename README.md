@@ -25,13 +25,12 @@ php -S localhost:8000 -t public/
 
 Open [http://localhost:8000](http://localhost:8000) with your browser to see the result.
 
-The project is composed in two parts:
 The project is composed of two parts:
 
 **Frontend:** 
-The Application gives the users the possibility to visit our different dishes and reserve a table. The visitor can create an account if he wants.
+The Application give the users the possibility to visit our different dishes and can reserve a table. The visitor can create an account, if he wants.
 
 **Backend:**
-As administrator, you can get access to the backend of the application form the same login page for the visitor with an account, that was created for the Admin. With this account, you can add, edit and delete the data on the apps and create other admin accounts for your employees. 
+As administrator, you can get access to the backend of the application from the same login page for the visitor with an account, that was created for the Admin. With this account, you can add, edit and delete the data on the apps and create other admin accounts for your employees. 
 
 Enjoy :smiley: !!!
