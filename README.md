@@ -31,7 +31,7 @@ The project is composed of two parts:
 The Application give the users the possibility to visit our different dishes and can reserve a table. The visitor can create an account, if he wants.
 
 **Backend:**
-As administrator, you can get access to the backend of the application from the same login page for the visitor with an account. 
+As administrator, you can add, edit and delete the data on the apps and create other admin accounts for employees. 
 To create your first account as admin, use DataFixtures to save your account data in the database. 
 
 ```bash
@@ -74,6 +74,6 @@ class AppFixtures extends Fixture
 # Load the fixtures in the database:
 php bin/console doctrine:fixtures:load 
 ```
-that was created for the Admin. With this account, you can add, edit and delete the data on the apps and create other admin accounts for your employees. 
+With this account, you can get access to the backend of the application from the same login page for the visitor with an account. 
 
 Enjoy :smiley: !!!
