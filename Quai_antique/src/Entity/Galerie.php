@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\GalerieRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[ORM\Entity(repositoryClass: GalerieRepository::class)]
 class Galerie
@@ -14,9 +15,11 @@ class Galerie
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[NotBlank()]
     private ?string $titel = null;
 
     #[ORM\Column(length: 255)]
+    #[NotBlank()]
     private ?string $image = null;
 
     public function getId(): ?int

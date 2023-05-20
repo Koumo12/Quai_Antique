@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 #[ORM\Entity(repositoryClass: InfoTableRepository::class)]
 class InfoTable
@@ -19,6 +20,7 @@ class InfoTable
     private ?int $id = null;
 
     #[ORM\Column]
+    #[NotNull()]
     private ?int $placeNumber = null;
 
    

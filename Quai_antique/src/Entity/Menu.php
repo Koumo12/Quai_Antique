@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\MenuRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 #[ORM\Entity(repositoryClass: MenuRepository::class)]
 class Menu
@@ -14,15 +16,19 @@ class Menu
     private ?int $id = null;
 
     #[ORM\Column(type:"string", length: 255)]
+    #[NotBlank()]
     private  $formule = null;
 
     #[ORM\Column(type:"string", length: 255)]
+    #[NotBlank()]
     private  $wishDay = null;
 
     #[ORM\Column(type:"string", length: 255)]
+    #[NotBlank()]
     private  $dishFormule = null;
 
     #[ORM\Column]
+    #[NotNull()]
     private ?float $price = null;
 
     public function getId(): ?int

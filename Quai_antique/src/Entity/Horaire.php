@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\HoraireRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[ORM\Entity(repositoryClass: HoraireRepository::class)]
 class Horaire
@@ -14,7 +15,8 @@ class Horaire
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255)] 
+    #[NotBlank()]
     private ?string $day = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]

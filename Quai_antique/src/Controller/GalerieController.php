@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/galerie', name: 'app_galerie.')]
+#[Route('/api/galerie', name: 'app_galerie.')]
 
 class GalerieController extends AbstractController
 {

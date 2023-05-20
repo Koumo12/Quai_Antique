@@ -62,7 +62,7 @@ security:
         - { path: ^/client/edit/[0-9]+, roles: ROLE_USER }
 
         # Les routes dont les droits est reserver a l´administrateur
-        - { path: ^/galerie, roles: ROLE_ADMIN}
+        - { path: ^/api/galerie, roles: ROLE_ADMIN}
         - { path: ^/carte/[a-z]+, roles: ROLE_ADMIN}
         - { path: ^/menu/[a-z]+, roles: ROLE_ADMIN}          
         - { path: ^/table, roles: ROLE_ADMIN}

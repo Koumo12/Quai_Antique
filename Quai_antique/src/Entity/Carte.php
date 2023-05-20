@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CarteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[ORM\Entity(repositoryClass: CarteRepository::class)]
 class Carte
@@ -14,15 +15,19 @@ class Carte
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[NotBlank()]
     private ?string $titel = null;
 
     #[ORM\Column]
+    #[NotBlank()]
     private ?float $price = null;
 
     #[ORM\Column(length: 255)]
+    #[NotBlank()]
     private ?string $description = null;
 
     #[ORM\ManyToOne(targetEntity: "App\Entity\Category", inversedBy: "plat")]
+    #[NotBlank()]
     private $category = null;
 
     public function getId(): ?int
