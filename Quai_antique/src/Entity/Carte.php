@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CarteRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 #[ORM\Entity(repositoryClass: CarteRepository::class)]
 class Carte
@@ -19,7 +20,7 @@ class Carte
     private ?string $titel = null;
 
     #[ORM\Column]
-    #[NotBlank()]
+    #[NotNull()]
     private ?float $price = null;
 
     #[ORM\Column(length: 255)]
