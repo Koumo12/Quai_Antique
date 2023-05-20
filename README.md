@@ -31,6 +31,49 @@ The project is composed of two parts:
 The Application give the users the possibility to visit our different dishes and can reserve a table. The visitor can create an account, if he wants.
 
 **Backend:**
-As administrator, you can get access to the backend of the application from the same login page for the visitor with an account, that was created for the Admin. With this account, you can add, edit and delete the data on the apps and create other admin accounts for your employees. 
+As administrator, you can add, edit and delete the data on the apps and create other admin accounts for employees. 
+To create your first account as admin, use DataFixtures to save your account data in the database. 
+
+```bash
+# install Fixtures 
+composer req orm-fixtures --dev
+```
+```bash
+# Create your account
+<?php
+
+namespace App\DataFixtures;
+
+use App\Entity\User;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactoryInterface;
+
+class AppFixtures extends Fixture
+{
+    public function __construct( private PasswordHasherFactoryInterface $passwordHasherFactory)
+    {
+        
+    }
+    public function load(ObjectManager $manager): void
+    {
+        // $product = new Product();
+        // $manager->persist($product);
+
+        $admin = new User();
+        $admin->setEmail('admin@gmail.com');
+        $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setPassword($this->passwordHasherFactory->getPasswordHasher(User::class)->hash('LTdyRrn8r&@u4345'));
+        $manager->persist($admin);
+
+        $manager->flush();
+    }
+}
+```
+```bash
+# Load the fixtures in the database:
+php bin/console doctrine:fixtures:load 
+```
+With this account, you can get access to the backend of the application from the same login page for the visitor with an account. 
 
 Enjoy :smiley: !!!
