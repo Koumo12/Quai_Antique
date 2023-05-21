@@ -74,7 +74,10 @@ class InscriptionController extends AbstractController
                     $em->flush();
                 }
 
-            return $this->redirect($this->generateUrl('app_login'));
+            // Message
+            $this->addFlash('success', 'Votre compte administrateur a été créer avec succès!');
+
+            return $this->redirect($this->generateUrl('app_inscription'));
         }
 
         return $this->render('inscription/index.html.twig', [            
