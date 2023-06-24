@@ -59,7 +59,6 @@ class InscriptionController extends AbstractController
             $role = ['ROLE_ADMIN'];
             $user->setRoles($role);
 
-
                 $errors = $validator->validate($user);
                 if(count($errors) > 0)
                 {

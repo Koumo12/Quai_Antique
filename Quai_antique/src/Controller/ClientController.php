@@ -44,7 +44,7 @@ class ClientController extends AbstractController
                 'type' => PasswordType::class,
                 'required' =>  true,
                 'first_options' => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Confirmer votre mot de passe'] 
+                'second_options' => ['label' => 'Confirmer votre mot de passe']
             ])
             ->add('nbreConvive', NumberType::class, [
                 'required' => false,
@@ -57,7 +57,7 @@ class ClientController extends AbstractController
                     'oui' => true,
                     'non' => false
                 ]
-            ])           
+            ])
             ->getForm()
         ;
         $form->handleRequest($request);
@@ -66,7 +66,6 @@ class ClientController extends AbstractController
             
             $infoSaisi = $form->getData();
 
-           
             $user->setEmail($infoSaisi['email']);
 
             $user->setPassword(

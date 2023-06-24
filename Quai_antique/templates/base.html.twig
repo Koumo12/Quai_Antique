@@ -62,7 +62,7 @@
                                         <li><a class="dropdown-item" href="{{path('app_menu.afficher')}}">Menu</a></li>
                                         <li><a class="dropdown-item" href="{{path('app_res_table.table_list')}}">Table</a></li>
                                         <li><a class="dropdown-item" href="{{path('app_horaire.afficher')}}">Horaire</a></li>
-                                         <li><a class="dropdown-item" href="{{path('app_inscription')}}"> Inscrire un admin</a></li>
+                                        <li><a class="dropdown-item" href="{{path('app_inscription')}}"> Inscrire un admin</a></li>
                                     </ul>
                                 </li>
                             {% endif %}
@@ -113,7 +113,7 @@
             </div>
     {% endif %}
 
-    {% block body %} {% endblock %}
+    {% block csrf_token_widget %} {% endblock %}
 
    	<!-- Footer section -->
 	<footer class="footer-section">

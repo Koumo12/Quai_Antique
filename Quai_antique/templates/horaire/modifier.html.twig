@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block csrf_token_widget %}
     {% for message in app.flashes('success') %}
         <div class="alert alert-success">
             <h3>{{ message }}</h3>

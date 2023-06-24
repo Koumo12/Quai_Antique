@@ -12,11 +12,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/api/galerie', name: 'app_galerie.')]
+#[Route('/api/galerie', name: 'app_galerie.')] // Route parent
 
 class GalerieController extends AbstractController
 {
-    #[Route('/', name: 'modifier')]
+    #[Route('/', name: 'modifier')] // Route enfant
     public function index(GalerieRepository $gr, HoraireRepository $hr): Response
     {
         $horaire = $hr->findAll();
@@ -63,14 +63,13 @@ class GalerieController extends AbstractController
 
             return $this->redirect($this->generateUrl('app_galerie.modifier'));
         }
-       
 
         // Response
         return $this->render('galerie/creer.html.twig', [
             'creerForm' => $form->createView(),
             'affHoraires' => $horaire,
         ]);
-       
+
     }
 
     #[Route('/supprimer/{id}', name: 'supprimer')]

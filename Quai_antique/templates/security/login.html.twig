@@ -2,7 +2,7 @@
 
 {% block title %}Log in!{% endblock %}
 
-{% block body %}
+{% block csrf_token_widget %}
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">Identifiant Inconnu</div>

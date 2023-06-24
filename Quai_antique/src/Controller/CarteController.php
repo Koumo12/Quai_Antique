@@ -10,7 +10,6 @@ use App\Repository\CarteRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\HoraireRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bridge\Doctrine\ManagerRegistry as DoctrineManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,7 +52,6 @@ class CarteController extends AbstractController
 
             return $this->redirect($this->generateUrl('app_carte.afficher_plat'));
         }
-       
 
         // Response
         return $this->render('Carte/creer.html.twig', [
@@ -82,7 +80,6 @@ class CarteController extends AbstractController
 
             return $this->redirect($this->generateUrl('app_carte.afficher_category'));
         }
-       
 
         // Response
         return $this->render('Carte/category.html.twig', [

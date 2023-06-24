@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block csrf_token_widget %}
     {% for message in app.flashes('success') %}
         <div class="alert alert-success">
             <h3>{{ message }}</h3>
@@ -9,7 +9,7 @@
 
     <br>
     <div class="container containerHeight">
-        <h2>Modifier les menus</h2>
+        <h2>Afficher les menus</h2>
         <br>
         <table class="table table-striped">
             <thead>
@@ -18,6 +18,7 @@
                     <td>Formule</td>
                     <td>Jour de la semanie</td>       
                     <td>Menu culinaire</td> 
+                     <td>Prix</td> 
                     <td><a href="{{'creer'}}" class="link">Créer un menu</a></td> 
                 </tr> 
             </thead>
@@ -28,8 +29,10 @@
                         <td>{{menu.formule}}</td>
                         <td>{{menu.wishDay}}</td>
                          <td>{{menu.dishFormule}}</td>
+                          <td>{{menu.price}}</td>
+                         <td><a href="{{'modifier/'}}{{menu.id}}" class="link success">Modifier</a></td>
                         <td><a href="{{'supprimer/'}}{{menu.id}}" class="link danger">Supprimer</a></td>
-                        <td></td>
+                        
                     </tr>
                 {% endfor %}
             </tbody>

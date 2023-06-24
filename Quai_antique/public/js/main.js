@@ -24,7 +24,7 @@ $(function() {
   var b=function(e)
   {
     this.$element=d(e);
-    this.stuff=d("[data-tag]");  
+    this.stuff=d("[data-tag]");
     this.target=this.$element.data("target")||""
   };
 
@@ -103,7 +103,8 @@ window.onload =  () => {
   
  window.onload = () =>
  {
-     // On va chercher le champ qui contient le jour
+  
+     // On va chercher le champ qui contient le nombre de convive
      let nombre = document.querySelector('#form_nbreConvive');
      let error = document.getElementById('error')
    
@@ -119,7 +120,6 @@ window.onload =  () => {
           let place = result[1].placeNumber;
           let placeDB = ((result[0][1] === null) ? 0 : parseInt(result[0][1]) );
           let placeRestante = place - placeDB;
-          console.log(placeRestante);
           
           if((placeRestante < parseInt(data)) && (placeRestante === 0))
           {
@@ -149,19 +149,64 @@ window.onload =  () => {
      nombre.addEventListener("change", handleChange);
 
 
+        // On va chercher le champ qui contient la date
+        let date = document.querySelector('#form_date');
+        let error1 = document.getElementById('error')
+      
+        const handleChange1 = (event) => {
+          
+          let data = {
+           date: event.target.value
+          };
+
+          console.log(data);
+   
+          // fetch('/traitement')
+          //  .then(response => response.json())
+          //  .then(result => {
+          //    let place = result[1].placeNumber;
+          //    let placeDB = ((result[0][1] === null) ? 0 : parseInt(result[0][1]) );
+          //    let placeRestante = place - placeDB;
+             
+          //    if((placeRestante < parseInt(data)) && (placeRestante === 0))
+          //    {
+          //      error.innerHTML = "Toutes les places sont malheureusement occupés !";
+          //      error.style.color = "red";
+          //    } else if ( (placeRestante < parseInt(data.nombre)) && (placeRestante > 0))
+          //    {
+          //      error.innerHTML = 'Maleheuresement nous avons '+placeRestante+' restantes';
+          //      error.style.color = "red";
+          //    } else if ( parseInt(data.nombre) === 0)
+          //    {
+          //      error.innerHTML = 'Veillez saisir le nombre de convive !';
+          //      error.style.color = "red";
+          //    }else 
+          //    {
+          //      error.innerHTML= "Le nombre de place validé !";
+          //      error.style.color = "green";
+          //    }
+            
+          //  })
+          //  .catch(error => {
+          //    console.log(error);
+          //  })
+        }
+        
+      
+        date.addEventListener("change", handleChange1);
+   
+
      // Traitement des données du formulaire Reservation
-     
-     const form = document.querySelector('form_js');
+
+    const form = document.querySelector('form_js');
 
       const handleSubmit = (event) => {
       event.preventDefault();
-       
-      
 
       const formData = new FormData(form);
 
       const data = formData.get('form[nbreConvive]');
-       
+
        fetch('/traitement')
         .then(response => response.json())
         .then(result => {
@@ -198,23 +243,17 @@ window.onload =  () => {
               // ...
             });
           }
-         
+
         })
         .catch(error => {
           console.log(error);
         })
-     }
-     
-    
-    form.addEventListener('submit', handleSubmit)
- } 
- 
+    }
 
-  
-  /* ============================================================
-   * Gérer les nombre de convives dans le formulaire Reservation
-   * ============================================================*/
- 
+    form.addEventListener('submit', handleSubmit)
+  }
+
+
 
 /* ===================================
  *    Gérer le format de la date

@@ -2,12 +2,12 @@
 
 {% block title %}Hello MenuController!{% endblock %}
 
-{% block body %}
+{% block csrf_token_widget %}
      <!-- Menu -->
         <div class="container containerHeight text-center pb-5">
             <h2>MENU DU MARCHÉ</h2>    
 
-            {% for menu in menus %}        
+            {% for menu in menus %}
                 <div class="row pt-3 pb-2">
                     <div class="col-lg-3 col-md-3 col-sm-2">
                     </div>
@@ -16,7 +16,7 @@
                         <span class="color">{{menu.formule}}</span>
                         <p class="size">({{menu.wishDay}})</p>
                         <h6>{{menu.dishFormule}} &nbsp; - &nbsp; {{menu.price}} €</h6>
-                    </div>                
+                    </div>
 
                     <div class="col-lg-3 col-md-3 col-sm-2">
                     </div>

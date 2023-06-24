@@ -20,7 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\LessThanOrEqual;
 
 class ReservationController extends AbstractController
 {
@@ -180,6 +180,7 @@ class ReservationController extends AbstractController
                     'multiple' => false,
                 ])  
                 ->add('subgroup', ChoiceType::class, [
+                    'required' => false,
                         'label' => 'Midi',
                         'choices' => [
                             '12:00' => '12:00',
@@ -196,6 +197,7 @@ class ReservationController extends AbstractController
                         'multiple' => true,
                     ])   
                 ->add('subgroup2', ChoiceType::class, [
+                    'required' => false,
                     'label' => 'Soir',
                     'choices' => [
                         '19:00' => '19:00',
@@ -215,19 +217,17 @@ class ReservationController extends AbstractController
                     'required' => false,
                     'label' => 'Autres précisions',
                     'help' => 'Ex: Nombre d´enfants présent'
-                ])             
+                ])
                 ->getForm()
             ;
-         
-       
+
             $form->handleRequest($request);
             
             if($form->isSubmitted() && $form->isValid())
             {
                 $infoSaisi = $form->getData();
-
-                $reservation->setName($infoSaisi['name']); 
-                $reservation->setNbreConvive($infoSaisi['nbreConvive']);                               
+                $reservation->setName($infoSaisi['name']);
+                $reservation->setNbreConvive($infoSaisi['nbreConvive']);
                 $reservation->setDate($infoSaisi['date']);
                 $reservation->setSubgroup($infoSaisi['subgroup']);
                 $reservation->setSubgroup2($infoSaisi['subgroup2']);
@@ -251,7 +251,7 @@ class ReservationController extends AbstractController
             'forms' =>$form->createView(),
             'affHoraires' => $hr->findAll(),
         ]);
-    }  
+    }
 
     #[Route('/traitement', name: 'traitement')]
     public function traitement(ManagerRegistry $doctrine, InfoTableRepository $it, ): Response
@@ -265,7 +265,7 @@ class ReservationController extends AbstractController
         );
 
         $query1 = $query1->getResult();
-       
+
         $query2 = $en->createQuery(
             'SELECT i.placeNumber
                 FROM App\Entity\InfoTable i
@@ -273,11 +273,11 @@ class ReservationController extends AbstractController
         );
 
         $query2 = $query2->getResult();
-       
+
         $query = array_merge($query1, $query2);
 
         return new JsonResponse($query);
-    }  
+    }
     
     #[Route('/supprimer/{id}', name: 'supprimer_res')]
     public function supprimer($id, ReservationRepository $rr, ManagerRegistry $doctrine): Response
@@ -295,3 +295,7 @@ class ReservationController extends AbstractController
     }
     
 }
+
+
+
+

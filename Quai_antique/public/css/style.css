@@ -86,10 +86,6 @@ body {
 	height:500px;
 }
 
-.containerHeight{
-	min-height: 60vh;
-	padding-top: 2em !important;
-}
 
 .tableImage {
 	width: 100px;

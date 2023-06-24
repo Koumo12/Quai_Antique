@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ReservationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\LessThanOrEqual;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;
 
@@ -37,6 +38,7 @@ class Reservation
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     #[NotNull()]
+    #[LessThanOrEqual('today')]
     private ?\DateTimeInterface $date = null;
 
     public function getName(): ?string
@@ -63,7 +65,6 @@ class Reservation
         return $this;
     }
 
-   
     public function getComment(): ?string
     {
         return $this->comment;
